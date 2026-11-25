@@ -52,3 +52,14 @@ La base preliminar 00 no forma parte de estas pruebas.
 
 Las pruebas del dominio, motor y orientacion horizontal
 continuan pendientes.
+
+### Revalidacion final de infraestructura
+
+Comando:
+./gradlew :core:test :app:assembleDebug --rerun-tasks
+
+Resultado: BUILD SUCCESSFUL.
+40 tareas ejecutadas.
+Duracion: 11 segundos.
+
+Commit de infraestructura: fae8536.

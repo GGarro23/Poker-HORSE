@@ -10,7 +10,7 @@
 - [x] Aplicacion ejecutada en dispositivo fisico.
 - [x] Repositorio local inicializado.
 - [x] Repositorio remoto configurado.
-- [ ] Primer commit publicado.
+- [x] Primer commit publicado.
 
 ## Dominio
 
@@ -31,3 +31,12 @@ Diseno pixel art definitivo pendiente.
 
 Cerrar el hito de infraestructura y comenzar
 la definicion del modelo de dominio.
+
+## Cierre del Hito 0
+
+Commit de infraestructura:
+fae8536b13cd706c736b4676d14a2fc5ca37ad50
+
+Infraestructura publicada y sincronizada con GitHub.
+
+Siguiente responsable: chat 02 - Modelo de dominio.
