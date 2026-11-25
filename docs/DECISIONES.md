@@ -70,3 +70,24 @@ consultarse como referencia opcional.
 
 No se incorporan sus contratos ni pruebas al repositorio
 en este hito.
+
+## PROP-04-001 - Flujo del motor de juego
+
+**Estado: PROPUESTA PENDIENTE, no adoptada.** Fecha: 25-11-2026.
+**Documento:** `docs/MOTOR_FLUJO.md` en `feature/motor`.
+
+- Orquestar desde `MotorDeJuego` transiciones puras, validacion de
+  actor, avances de calle, cierre y liquidacion.
+- Mantener calculo de apuestas y botes en colaboradores independientes.
+- Obtener reparto, obligaciones, orden y evaluacion de `ReglasVariante`.
+- Permitir un proveedor de mazo determinista y un bot con vista filtrada.
+- Usar botes por niveles de aportes y elegir ganadores por cada bote,
+  sin permitir ganar a jugadores retirados.
+- Antes de codificar, pedir al chat 02 tipos definitivos de identidad,
+  importes, acciones y resultados de transicion; al 03, contratos de
+  variante, apuesta y evaluacion; al 00, arbitraje compartido.
+- No modificar interfaces comunes ni mezclar `feature/motor` a
+  `main` sin revisar esos puntos.
+
+Esta propuesta describe una arquitectura interna del chat 04;
+**no fija firmas ni cierra reglas**.
