@@ -1,0 +1,43 @@
+# Gradle
+.gradle/
+.kotlin/
+**/build/
+local.properties
+
+# Android Studio / IntelliJ IDEA
+.idea/
+*.iml
+captures/
+
+# Android build artifacts
+*.apk
+*.aab
+*.ap_
+.externalNativeBuild/
+.cxx/
+
+# Signing keys and credentials
+*.jks
+*.keystore
+*.p12
+*.pem
+keystore.properties
+secrets.properties
+.env
+.env.*
+!.env.example
+
+# Operating system
+.DS_Store
+Thumbs.db
+
+# Private academic documents
+poker.pdf
+Poker_HORSE_Guia_Maestra.pdf
+
+# Temporary files
+*.swp
+*.swo
+*.tmp
+*.log
+*~
