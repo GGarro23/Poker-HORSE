@@ -63,3 +63,19 @@ Resultado: BUILD SUCCESSFUL.
 Duracion: 11 segundos.
 
 Commit de infraestructura: fae8536.
+
+## 2026-11-26 - Cartas, rangos y palos
+
+Comando:
+./gradlew :core:test --rerun-tasks
+
+Resultados verificados mediante informes XML:
+
+- CoreInfoTest: 1 prueba.
+- CartaTest: 9 pruebas.
+- Total: 10 pruebas.
+- Fallos: 0.
+- Errores: 0.
+- Omitidas: 0.
+
+Resultado: exitoso.

@@ -47,3 +47,14 @@ CoreInfo y CoreInfoTest verifican provisionalmente
 la integracion entre los modulos.
 
 No forman parte del modelo definitivo del juego.
+
+## Primeros componentes del dominio
+
+El paquete core.domain contiene:
+
+- Palo: conjunto cerrado de palos.
+- Rango: conjunto cerrado de rangos.
+- Carta: objeto de valor inmutable.
+
+Estos componentes no dependen de Android,
+evaluadores, variantes ni motor.

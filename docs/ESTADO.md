@@ -40,3 +40,21 @@ fae8536b13cd706c736b4676d14a2fc5ca37ad50
 Infraestructura publicada y sincronizada con GitHub.
 
 Siguiente responsable: chat 02 - Modelo de dominio.
+
+## Dominio
+
+Hito 1 en desarrollo.
+
+- [x] Palo.
+- [x] Rango.
+- [x] Carta.
+- [x] Pruebas de cartas, rangos y palos.
+- [ ] Mazo.
+- [ ] Jugadores e identidad.
+- [ ] Acciones.
+- [ ] Estados de mano y partida.
+- [ ] Configuracion de partida.
+- [ ] Contratos restantes.
+
+El dominio se construye desde cero, sin utilizar
+la base preliminar 00.

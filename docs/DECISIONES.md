@@ -70,3 +70,19 @@ consultarse como referencia opcional.
 
 No se incorporan sus contratos ni pruebas al repositorio
 en este hito.
+
+## D-007 - Representacion de cartas
+
+Estado: implementada.
+
+- Utilizar enumeraciones para Palo y Rango.
+- Utilizar una data class inmutable para Carta.
+- Representar cartas mediante composicion.
+- Utilizar igualdad estructural.
+- Delegar las comparaciones dependientes de las
+  reglas a evaluadores y estrategias.
+
+Justificacion:
+Los tipos enumerados impiden representar rangos
+y palos invalidos. No se requiere una jerarquia
+de cartas ni validaciones redundantes.
