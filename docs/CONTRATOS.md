@@ -107,3 +107,27 @@ Agotar las fichas mediante un aporte produce ALL_IN.
 
 La legalidad de las apuestas y transiciones de estado
 corresponde al motor.
+
+## Acciones
+
+Estado: implementado y probado, pendiente de ratificación.
+
+Accion es una sealed interface con seis implementaciones:
+
+- Fold
+- Check
+- Call
+- AllIn
+- Bet(cantidad: Long)
+- Raise(hasta: Long)
+
+Bet representa las fichas nuevas de una apuesta inicial.
+Raise representa el aporte objetivo de la calle,
+no el incremento ni el aporte acumulado de la mano.
+
+Bet y Raise requieren montos estrictamente positivos.
+
+Call y AllIn no reciben montos: el motor los calcula
+a partir del estado vigente.
+
+La legalidad de las acciones corresponde al motor.

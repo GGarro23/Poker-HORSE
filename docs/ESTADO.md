@@ -14,9 +14,29 @@
 
 ## Dominio
 
-Pendiente de implementacion por el chat 02.
+Hito 1 en desarrollo.
 
-La base preliminar 00 no se integra automaticamente.
+- [x] Palo.
+- [x] Rango.
+- [x] Carta.
+- [x] Pruebas de cartas, rangos y palos.
+- [x] Mazo y ResultadoExtraccion.
+- [x] Pruebas de mazo.
+- [x] JugadorId y Asiento.
+- [x] Jugador.
+- [x] EstadoJugador.
+- [x] ParticipacionMano y ResultadoAporte.
+- [x] Pruebas de identidad, jugadores y participación.
+- [x] Variante y Calle.
+- [x] Acciones.
+- [ ] Estados de mano y partida.
+- [ ] Configuracion de partida.
+- [ ] Contratos restantes.
+
+El dominio se construye desde cero, sin utilizar
+la base preliminar 00.
+
+Pruebas acumuladas: 83 exitosas.
 
 ## Motor
 
@@ -43,47 +63,3 @@ Infraestructura publicada y sincronizada con GitHub.
 
 Siguiente responsable: chat 02 - Modelo de dominio.
 
-## Dominio
-
-Hito 1 en desarrollo.
-
-- [x] Palo.
-- [x] Rango.
-- [x] Carta.
-- [x] Pruebas de cartas, rangos y palos.
-- [x] Mazo.
-- [x] Pruebas de mazo.
-- [ ] Jugadores e identidad.
-- [ ] Acciones.
-- [ ] Estados de mano y partida.
-- [ ] Configuracion de partida.
-- [ ] Contratos restantes.
-
-El dominio se construye desde cero, sin utilizar
-la base preliminar 00.
-
-## Dominio
-
-Hito 1 en desarrollo.
-
-- [x] Palo.
-- [x] Rango.
-- [x] Carta.
-- [x] Pruebas de cartas, rangos y palos.
-- [x] Mazo y ResultadoExtraccion.
-- [x] Pruebas de mazo.
-- [x] JugadorId y Asiento.
-- [x] Jugador.
-- [x] EstadoJugador.
-- [x] ParticipacionMano y ResultadoAporte.
-- [x] Pruebas de identidad, jugadores y participación.
-- [ ] Variante y Calle.
-- [ ] Acciones.
-- [ ] Estados de mano y partida.
-- [ ] Configuracion de partida.
-- [ ] Contratos restantes.
-
-El dominio se construye desde cero, sin utilizar
-la base preliminar 00.
-
-Pruebas acumuladas: 69 exitosas.

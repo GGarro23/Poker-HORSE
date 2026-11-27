@@ -89,3 +89,14 @@ jugador y su participación después de un aporte.
 
 El dominio protege las invariantes locales.
 El motor coordina las reglas y transiciones globales.
+
+## Acciones del dominio
+
+Accion representa las decisiones de los participantes
+mediante una interfaz sellada.
+
+El motor, los bots y la interfaz utilizan este contrato
+sin duplicar la representación de acciones.
+
+La validación contextual y ejecución de acciones
+corresponden al motor.

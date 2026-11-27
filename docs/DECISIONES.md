@@ -105,7 +105,7 @@ las invariantes y facilitar pruebas reproducibles.
 
 ## D-009 - Identidad y participación de jugadores
 
-Estado: implementada y probada, pendiente de ratificación.
+Estado: Aceptada
 
 - Separar identidad y posición mediante value classes.
 - Utilizar Long para representar cantidades de fichas.
@@ -124,3 +124,21 @@ local de fichas sin duplicar información.
 La unicidad de identidades y asientos, la capacidad de
 la mesa y la coherencia global corresponden a los
 estados agregados de la partida y al motor.
+
+## D-011 - Representación polimórfica de acciones
+
+Estado: implementada y probada, pendiente de ratificación.
+
+Utilizar una sealed interface para representar acciones
+con y sin parámetros.
+
+Utilizar data object para Fold, Check, Call y AllIn.
+Utilizar data class para Bet y Raise.
+
+Bet representa fichas nuevas y Raise un aporte objetivo
+de la calle.
+
+Justificación:
+
+Evitar estados inválidos, garantizar seguridad de tipos
+y permitir expresiones when exhaustivas.

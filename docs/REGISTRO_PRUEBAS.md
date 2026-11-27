@@ -127,3 +127,19 @@ Resultado: exitoso.
 Se verificaron las invariantes, la inmutabilidad,
 la protección de colecciones, los límites numéricos
 y la conservación local de fichas.
+
+## 2026-11-27 - Acciones del dominio
+
+Comando:
+./gradlew :core:test --rerun-tasks
+
+- Pruebas anteriores: 71.
+- AccionTest: 12.
+- Total: 83.
+- Fallos: 0.
+- Errores: 0.
+- Omitidas: 0.
+
+Resultado: BUILD SUCCESSFUL.
+Duración: 7 segundos.
+Evidencia: informes XML.
