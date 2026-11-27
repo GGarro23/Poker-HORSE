@@ -86,3 +86,19 @@ Justificacion:
 Los tipos enumerados impiden representar rangos
 y palos invalidos. No se requiere una jerarquia
 de cartas ni validaciones redundantes.
+
+## D-008 - Mazo inmutable
+
+Estado: implementada.
+
+- Constructor privado y método de fábrica.
+- Colección interna privada con copia defensiva.
+- Validación de cantidad máxima y ausencia de duplicados.
+- Mezcla y extracción sin modificar el objeto original.
+- Inyección del generador Random.
+- ResultadoExtraccion como tipo explícito de dominio.
+- Uso de IllegalStateException al extraer de un mazo vacío.
+
+Justificación:
+Preservar los estados anteriores del juego, proteger
+las invariantes y facilitar pruebas reproducibles.

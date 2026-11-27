@@ -58,3 +58,16 @@ El paquete core.domain contiene:
 
 Estos componentes no dependen de Android,
 evaluadores, variantes ni motor.
+
+## Administración del mazo
+
+Mazo encapsula la colección de cartas disponibles.
+
+Las operaciones de mezcla y extracción producen
+nuevos mazos sin modificar los anteriores.
+
+ResultadoExtraccion representa conjuntamente la
+carta extraída y el mazo restante.
+
+No existen dependencias de Android ni del motor.
+

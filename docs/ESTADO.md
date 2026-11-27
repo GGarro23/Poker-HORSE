@@ -49,7 +49,8 @@ Hito 1 en desarrollo.
 - [x] Rango.
 - [x] Carta.
 - [x] Pruebas de cartas, rangos y palos.
-- [ ] Mazo.
+- [x] Mazo.
+- [x] Pruebas de mazo.
 - [ ] Jugadores e identidad.
 - [ ] Acciones.
 - [ ] Estados de mano y partida.
