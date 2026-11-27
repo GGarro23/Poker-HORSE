@@ -102,3 +102,25 @@ Estado: implementada.
 Justificación:
 Preservar los estados anteriores del juego, proteger
 las invariantes y facilitar pruebas reproducibles.
+
+## D-009 - Identidad y participación de jugadores
+
+Estado: implementada y probada, pendiente de ratificación.
+
+- Separar identidad y posición mediante value classes.
+- Utilizar Long para representar cantidades de fichas.
+- Proteger las operaciones contra desbordamientos.
+- Representar Jugador mediante una data class inmutable.
+- Separar los datos persistentes de los datos de cada mano.
+- Proteger las colecciones mediante copias defensivas.
+- Actualizar conjuntamente fichas y aportes mediante ResultadoAporte.
+
+Justificación:
+
+Evitar confusiones entre identificadores y posiciones,
+preservar estados anteriores y garantizar la conservación
+local de fichas sin duplicar información.
+
+La unicidad de identidades y asientos, la capacidad de
+la mesa y la coherencia global corresponden a los
+estados agregados de la partida y al motor.

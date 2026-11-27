@@ -29,8 +29,10 @@ Diseno pixel art definitivo pendiente.
 
 ## Siguiente paso
 
-Cerrar el hito de infraestructura y comenzar
-la definicion del modelo de dominio.
+Completar el modelo de variantes, calles y acciones.
+
+Continuar con la configuración y los estados
+agregados de mano y partida.
 
 ## Cierre del Hito 0
 
@@ -59,3 +61,29 @@ Hito 1 en desarrollo.
 
 El dominio se construye desde cero, sin utilizar
 la base preliminar 00.
+
+## Dominio
+
+Hito 1 en desarrollo.
+
+- [x] Palo.
+- [x] Rango.
+- [x] Carta.
+- [x] Pruebas de cartas, rangos y palos.
+- [x] Mazo y ResultadoExtraccion.
+- [x] Pruebas de mazo.
+- [x] JugadorId y Asiento.
+- [x] Jugador.
+- [x] EstadoJugador.
+- [x] ParticipacionMano y ResultadoAporte.
+- [x] Pruebas de identidad, jugadores y participación.
+- [ ] Variante y Calle.
+- [ ] Acciones.
+- [ ] Estados de mano y partida.
+- [ ] Configuracion de partida.
+- [ ] Contratos restantes.
+
+El dominio se construye desde cero, sin utilizar
+la base preliminar 00.
+
+Pruebas acumuladas: 69 exitosas.

@@ -101,3 +101,29 @@ Ejecución posterior verificada mediante XML:
 - Omitidas: 0.
 
 Resultado: exitoso.
+
+## 2026-11-26 - Jugadores, identidad y participación
+
+Comando:
+./gradlew :core:test --rerun-tasks
+
+Resultados confirmados mediante informes XML:
+
+- CoreInfoTest: 1 prueba.
+- CartaTest: 9 pruebas.
+- MazoTest: 9 pruebas.
+- AsientoTest: 5 pruebas.
+- JugadorIdTest: 5 pruebas.
+- JugadorTest: 17 pruebas.
+- ParticipacionManoTest: 23 pruebas.
+
+Total: 69 pruebas.
+Fallos: 0.
+Errores: 0.
+Omitidas: 0.
+
+Resultado: exitoso.
+
+Se verificaron las invariantes, la inmutabilidad,
+la protección de colecciones, los límites numéricos
+y la conservación local de fichas.

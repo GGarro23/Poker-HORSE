@@ -65,3 +65,45 @@ Extraer de un mazo vacío lanza IllegalStateException.
 
 La mezcla admite generadores aleatorios con semilla
 para permitir pruebas reproducibles.
+
+## Jugadores, identidad y participación
+
+Estado: implementado y probado, pendiente de ratificación.
+
+- JugadorId: value class con identificador: Int no negativo.
+- Asiento: value class con posicion: Int no negativa.
+- Jugador: data class inmutable con id, nombre, asiento y fichas.
+- Las cantidades de fichas se representan mediante Long.
+
+Operaciones de Jugador:
+- retirarFichas(cantidad: Long): Jugador
+- recibirFichas(cantidad: Long): Jugador
+
+EstadoJugador:
+- ACTIVO
+- RETIRADO
+- ALL_IN
+
+ParticipacionMano contiene:
+- jugadorId
+- Cartas individuales protegidas mediante copias defensivas.
+- aporteCalle: Long
+- aporteTotal: Long
+- estado: EstadoJugador
+
+Operaciones públicas:
+- obtenerCartas(): List<Carta>
+- agregarCarta(carta: Carta): ParticipacionMano
+- reiniciarAporteCalle(): ParticipacionMano
+- cambiarEstado(nuevoEstado: EstadoJugador): ParticipacionMano
+- aportarFichas(jugador: Jugador, cantidad: Long,
+  esAnte: Boolean = false): ResultadoAporte
+
+ResultadoAporte contiene el jugador y la participación actualizados.
+
+Los antes incrementan exclusivamente el aporte total.
+Las operaciones normales incrementan ambos aportes.
+Agotar las fichas mediante un aporte produce ALL_IN.
+
+La legalidad de las apuestas y transiciones de estado
+corresponde al motor.

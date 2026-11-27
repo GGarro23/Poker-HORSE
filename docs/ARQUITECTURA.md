@@ -71,3 +71,21 @@ carta extraída y el mazo restante.
 
 No existen dependencias de Android ni del motor.
 
+## Modelo de jugadores
+
+Jugador representa los datos persistentes del participante.
+
+JugadorId y Asiento representan conceptos independientes
+mediante tipos específicos del dominio.
+
+ParticipacionMano representa las cartas, los aportes
+y el estado temporal de un jugador durante una mano.
+
+Las fichas disponibles se almacenan exclusivamente
+en Jugador.
+
+ResultadoAporte agrupa los estados actualizados del
+jugador y su participación después de un aporte.
+
+El dominio protege las invariantes locales.
+El motor coordina las reglas y transiciones globales.
