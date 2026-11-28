@@ -173,3 +173,14 @@ Duración: 7 segundos.
 
 Evidencia: informes XML de Gradle.
 Fecha UTC: 2026-11-28T03:55:41Z.
+
+## 2026-11-27 — Chat 03
+
+- Evaluador alto: ejecución local completa exitosa (11 s), específica (15 s).
+- Base de evaluadores y variantes c9cc1a6: ejecución local
+  `./gradlew :core:test --rerun-tasks`, BUILD SUCCESSFUL (10 s),
+  4 tareas ejecutadas. No se recibió el XML, por lo que no se afirma un total.
+- Cierre: 13 métodos nuevos en OrdenAccionTest; pendientes de ejecución.
+  No se cuenta un método escrito como prueba ejecutada.
+- Verificar con `./gradlew :core:test --rerun-tasks` y sumar tests,
+  failures, errors y skipped de core/build/test-results/test/TEST-*.xml.

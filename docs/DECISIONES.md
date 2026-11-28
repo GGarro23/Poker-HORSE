@@ -192,3 +192,16 @@ Representar los errores esperables mediante ErrorDominio.
 
 Reservar las excepciones para construcciones inválidas
 o incumplimientos de las precondiciones internas.
+
+## PROP-03-002 — Integración de reglas fixed-limit
+
+Estado: contrato general ratificado provisionalmente; detalles pendientes
+de coordinación con 04 y cierre por 00.
+
+- Límite propuesto: tres aumentos completos tras apertura, incluso heads-up.
+- Stud alto cuarta: incremento grande opcional con pareja visible; el motor
+  conserva el incremento grande cuando se ha utilizado.
+- Agotamiento Stud: carta comunitaria excepcional en séptima; no reducir
+  el máximo de ocho jugadores del dominio.
+- LAN listen server: el anfitrión es la autoridad; no ranked obligatorio.
+- La estrategia no muta el dominio, ni ejecuta apuestas, ni serializa.

@@ -37,10 +37,22 @@ internal interface ReglasVariante {
 
     fun planReparto(calle: Calle): PlanReparto
 
+    /** Consultar antes de repartir la calle indicada. */
+    fun planReparto(calle: Calle, mano: EstadoMano): PlanReparto = planReparto(calle)
+
     fun apuestaBase(
         calle: Calle,
         configuracion: ConfiguracionPartida
     ): Long
+
+    /** Incrementos completos disponibles al inicio de la calle. */
+    fun incrementosPermitidos(
+        mano: EstadoMano,
+        configuracion: ConfiguracionPartida
+    ): Set<Long> = setOf(apuestaBase(mano.calle, configuracion))
+
+    /** Propuesta de proyecto: tres aumentos completos tras la apertura. */
+    val maximoAumentosPorCalle: Int get() = 3
 
     fun cartasVisibles(cartas: List<Carta>): List<Carta>
 

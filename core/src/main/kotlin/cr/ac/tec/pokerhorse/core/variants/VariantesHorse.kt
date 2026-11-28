@@ -59,6 +59,19 @@ internal class EstrategiaStud(
     override fun planReparto(calle: Calle) =
         reglas.planReparto(calle)
 
+    override fun planReparto(calle: Calle, mano: EstadoMano): PlanReparto {
+        val normal = reglas.planReparto(calle)
+        if (calle != Calle.SEPTIMA) return normal
+        val contendientes = mano.obtenerParticipaciones()
+            .count { it.estado != EstadoJugador.RETIRADO }
+        if (mano.mazo.cantidad >= contendientes + normal.quemadas) return normal
+        check(mano.mazo.cantidad >= 1) { "No hay cartas para completar séptima calle" }
+        return PlanReparto(
+            comunitarias = 1,
+            quemadas = if (mano.mazo.cantidad >= 2) 1 else 0
+        )
+    }
+
     override fun apuestaBase(
         calle: Calle,
         configuracion: ConfiguracionPartida
@@ -71,9 +84,11 @@ internal class EstrategiaStud(
         propias: List<Carta>,
         comunitarias: List<Carta>
     ): ResultadoEvaluacion {
-        require(comunitarias.isEmpty())
-        require(propias.size == 7)
-        return evaluacion(propias)
+        require(
+            (propias.size == 7 && comunitarias.isEmpty()) ||
+                (propias.size == 6 && comunitarias.size == 1)
+        ) { "Cantidad de cartas inválida para Stud" }
+        return evaluacion(propias + comunitarias)
     }
 
     override fun apuestasForzosas(
@@ -158,7 +173,22 @@ EstrategiaStud(
             alta = EvaluadorAlto.mejorDe(propias)
         )
     }
-)
+) {
+    override fun incrementosPermitidos(
+        mano: EstadoMano,
+        configuracion: ConfiguracionPartida
+    ): Set<Long> {
+        val base = apuestaBase(mano.calle, configuracion)
+        if (mano.calle != Calle.CUARTA) return setOf(base)
+        val parejaVisible = mano.obtenerParticipaciones().any { p ->
+            val visibles = cartasVisibles(p.obtenerCartas())
+            p.estado != EstadoJugador.RETIRADO && visibles.size == 2 &&
+                visibles[0].rango == visibles[1].rango
+        }
+        return if (parejaVisible) setOf(base, configuracion.apuestaGrande)
+        else setOf(base)
+    }
+}
 
 internal object StudEightOrBetter : ReglasVariante by
 EstrategiaStud(

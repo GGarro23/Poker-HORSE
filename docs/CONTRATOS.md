@@ -353,3 +353,45 @@ Resultado: BUILD SUCCESSFUL.
 
 Evidencia: informes XML de la ejecución local
 del 27 de noviembre de 2026, hora de Costa Rica.
+
+## Contrato de variantes HORSE (chat 03)
+
+Estado: arquitectura y contrato general ratificados provisionalmente por 00;
+extensiones de cierre pendientes de validación e integración con 04.
+
+- `Variantes.obtener(variante): ReglasVariante` registra las cinco estrategias.
+- `calles`, `modalidad`, `planReparto(calle)` y `planReparto(calle, mano)`
+  describen la secuencia, el resultado y el reparto. Consultar la sobrecarga
+  con estado **antes** de repartir cada calle.
+- `cartasVisibles(cartas)` devuelve solo cartas individuales expuestas;
+  en Stud son los índices 2 a 5, conservando el orden de reparto.
+- `evaluar(propias, comunitarias)` entrega ResultadoEvaluacion; los valores
+  altos y bajos son comparables, mayor significa mejor. Null en baja de Hi-Lo
+  indica ausencia de low calificado; modalidad distingue Razz.
+- `apuestasForzosas(mano, config)`: consultar una sola vez tras el reparto
+  inicial, antes de contabilizar aportes. Devuelve obligaciones nominales:
+  limitar a la pila, aplicar ante al aporte total únicamente y las demás
+  al aporte de calle y total. Si el ante agota al bring-in original,
+  desplazarlo al siguiente asiento con fichas después del ante.
+- `ordenAccion(mano)`: orden circular de jugadores capaces de actuar.
+  Para Stud en tercera calle, la referencia es la carta de bring-in original;
+  el motor debe conservar el bring-in efectivo de las obligaciones y empezar
+  la acción voluntaria después de ese asiento, sin recalcular obligaciones.
+  En las demás calles, fijar el orden al inicio; omitir retirados y all-in.
+- `incrementosPermitidos(mano, config)`: consultar al inicio de la calle.
+  Stud alto en cuarta con pareja expuesta admite pequeña o grande; cuando
+  se utiliza un incremento grande completo, conservarlo hasta fin de calle.
+  En las demás variantes solo se permite el incremento base.
+- `maximoAumentosPorCalle`: propuesta de tres aumentos completos después de
+  la apertura, incluso heads-up; la finalización del bring-in constituye
+  apertura, no un aumento adicional. 04 controla reapertura y aportes all-in.
+- En séptima calle de Stud, con mazo insuficiente, usar una carta comunitaria
+  pública excepcional, una sola vez en EstadoMano, sin duplicarla en cada
+  participación. Quemar antes solo si quedan al menos dos cartas.
+  Evaluar seis propias más una comunitaria; normalmente siete propias.
+  La apertura de esta calle usa las cuatro cartas personales expuestas
+  (decisión del proyecto pendiente de ratificación).
+- 04 reparte a todos los contendientes no retirados, incluidos all-in.
+  Las cartas quemadas se extraen del mazo y no se distribuyen.
+- Los tipos son internos a core; no dependen de Android, sockets ni
+  serialización. El anfitrión LAN resuelve reglas y resultados.

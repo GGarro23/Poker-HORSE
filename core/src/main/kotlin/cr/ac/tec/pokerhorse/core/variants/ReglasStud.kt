@@ -93,22 +93,18 @@ internal class ReglasStud(
         config: ConfiguracionPartida
     ): List<ApuestaForzosa> {
 
-        val antes = participantes(mano)
-            .filter {
-                mano.buscarParticipacion(it.id)?.estado !=
-                        EstadoJugador.RETIRADO
-            }
+        require(mano.calle == Calle.TERCERA)
+        val antes = puedenActuar(mano)
             .filter { config.ante > 0L }
-            .map {
-                ApuestaForzosa(it.id, config.ante, true)
-            }
+            .map { ApuestaForzosa(it.id, config.ante, true) }
 
-        val obligado = bringIn(mano) ?: return antes
-
-        return antes + ApuestaForzosa(
-            obligado.id,
-            config.bringIn
-        )
+        val original = bringIn(mano) ?: return antes
+        // Se calcula antes de contabilizar los antes.
+        val candidatos = puedenActuar(mano)
+            .filter { it.fichas > config.ante }
+        val obligado = rotarDesde(candidatos, original.asiento, true)
+            .firstOrNull() ?: return antes
+        return antes + ApuestaForzosa(obligado.id, config.bringIn)
     }
 
     private fun fuerzaVisible(

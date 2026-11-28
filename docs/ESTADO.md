@@ -62,3 +62,13 @@ Infraestructura publicada y sincronizada con GitHub.
 
 Siguiente responsable: chat 02 - Modelo de dominio.
 
+
+
+## Chat 03 — Evaluadores y variantes (27-11-2026)
+
+Evaluadores alto y bajo y cinco estrategias implementados en
+feature/implementacion-variantes. Base validada localmente por Gabriel:
+c9cc1a6, BUILD SUCCESSFUL (10 segundos). Contrato general ratificado
+provisionalmente por 00. Cierre agrega pruebas de orden, bring-in,
+excepción de cuarta calle y mazo insuficiente; ejecución nueva pendiente.
+Integración a main condicionada a pruebas y coordinación con 04.

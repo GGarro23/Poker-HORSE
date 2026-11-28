@@ -62,6 +62,7 @@ internal class ReglasComunitarias(
         config: ConfiguracionPartida
     ): List<ApuestaForzosa> {
 
+        require(mano.calle == Calle.PREFLOP)
         val (pequena, grande) = ciegas(mano)
 
         return listOf(
