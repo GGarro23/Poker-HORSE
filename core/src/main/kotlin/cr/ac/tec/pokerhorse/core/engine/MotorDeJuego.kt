@@ -68,7 +68,7 @@ class MotorDeJuego internal constructor(
             }
             val pendientes = ronda.pendientes.intersect(activos)
             if (pendientes.isNotEmpty()) {
-                val indice = ronda.orden.indexOf(ultimo)
+                val indice = ronda.orden.indexOfFirst { it == ultimo }
                 val orden = if (indice < 0) ronda.orden else ronda.orden.drop(indice + 1) + ronda.orden.take(indice + 1)
                 val turno = orden.first { it in pendientes }
                 mano = mano.reconstruir(turno = turno)
@@ -117,5 +117,22 @@ class MotorDeJuego internal constructor(
         val nueva = inicio.iniciar(partida.configuracion, jugadores, boton, mazo,
             obtenerReglas(rotacion[indice]), partida.manosCompletadas)
         return ResultadoTransicion.Exito(continuar(nueva, null))
+    }
+
+    fun vistaPara(estado: EstadoMotor, jugadorId: JugadorId): VistaJugador {
+        val mano = estado.mano
+        require(mano.buscarJugador(jugadorId) != null)
+        val reglas = obtenerReglas(mano.variante)
+        val participantes = mano.obtenerJugadores().map { jugador ->
+            val p = mano.buscarParticipacion(jugador.id)
+            VistaParticipante(jugador.id, jugador.nombre, jugador.asiento, jugador.fichas,
+                p?.aporteCalle ?: 0L, p?.aporteTotal ?: 0L, p?.estado,
+                reglas.cartasVisibles(p?.obtenerCartas().orEmpty()))
+        }
+        return VistaJugador(jugadorId, mano.variante, mano.calle, mano.boton, mano.turno,
+            mano.pozo, participantes, mano.buscarParticipacion(jugadorId)?.obtenerCartas().orEmpty(),
+            mano.obtenerComunitarias(),
+            if (mano.turno == jugadorId) accionesLegales(estado) else emptyList(),
+            estado.finalizada, estado.resultado?.premios.orEmpty(), estado.partida.manosCompletadas)
     }
 }
