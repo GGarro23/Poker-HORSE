@@ -37,7 +37,10 @@ la base preliminar 00.
 
 ## Motor
 
-Pendiente.
+Implementado en `feature/motor-de-juego` y validado localmente:
+196 pruebas, 0 fallos, 0 errores y 0 omitidas.
+Pendiente de revisión e integración a main.
+Sesión autoritativa disponible; transporte LAN y Android pendientes.
 
 ## Interfaz
 
@@ -74,3 +77,10 @@ excepción de cuarta calle y mazo insuficiente. Validación local de cierre:
 174 pruebas, 0 fallos, 0 errores, 0 omitidas, en el commit 9cf2a0e.
 Evaluadores y estrategias verificados; listos para consumo por el motor.
 Integración a main pendiente de coordinación final con 04 y 00.
+
+## Chat 04 — Motor
+
+Commit probado: `cd49a83d4ace31c976bfd02287aefa87a2ab5229`.
+BUILD SUCCESSFUL y 196 pruebas confirmadas por el propietario mediante XML.
+No se alteraron los contratos previos de dominio y variantes. Las reglas
+pendientes de ratificación están en REGLAS.md y DECISIONES.md.

@@ -34,16 +34,17 @@ por la misma sesión. No se implementan sockets en core.
 
 ## Pruebas
 
-174 pruebas anteriores registradas por 03. Las nuevas pruebas cubren
+174 pruebas anteriores registradas por 03 y 22 nuevas, para un total de 196.
+Las nuevas pruebas cubren
 reparto, obligaciones, apuestas, turnos, botes, split, empate, rotación,
-privacidad y revisión autoritativa. No ejecutadas en este entorno:
-no se dispone de Gradle ni compilador Kotlin. Ejecutar en el repositorio
-local:
+privacidad y revisión autoritativa. Gabriel confirmó BUILD SUCCESSFUL y 196 pruebas, con cero fallos,
+errores u omitidas, mediante el conteo de XML local del commit
+`cd49a83d4ace31c976bfd02287aefa87a2ab5229`. No se ejecutó Gradle en el entorno del chat.
+Comando de regresión:
 
 ```bash
 ./gradlew :core:test --rerun-tasks
 ```
 
-No considerar este bloque aprobado hasta confirmar la compilación y
-los resultados del XML. Políticas pendientes: REGLAS.md y DECISIONES.md.
+Compilación y regresión local confirmadas. Políticas pendientes: REGLAS.md y DECISIONES.md.
 No se ha integrado a main.
