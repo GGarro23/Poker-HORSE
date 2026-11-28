@@ -47,3 +47,79 @@ CoreInfo y CoreInfoTest verifican provisionalmente
 la integracion entre los modulos.
 
 No forman parte del modelo definitivo del juego.
+
+## Primeros componentes del dominio
+
+El paquete core.domain contiene:
+
+- Palo: conjunto cerrado de palos.
+- Rango: conjunto cerrado de rangos.
+- Carta: objeto de valor inmutable.
+
+Estos componentes no dependen de Android,
+evaluadores, variantes ni motor.
+
+## Administración del mazo
+
+Mazo encapsula la colección de cartas disponibles.
+
+Las operaciones de mezcla y extracción producen
+nuevos mazos sin modificar los anteriores.
+
+ResultadoExtraccion representa conjuntamente la
+carta extraída y el mazo restante.
+
+No existen dependencias de Android ni del motor.
+
+## Modelo de jugadores
+
+Jugador representa los datos persistentes del participante.
+
+JugadorId y Asiento representan conceptos independientes
+mediante tipos específicos del dominio.
+
+ParticipacionMano representa las cartas, los aportes
+y el estado temporal de un jugador durante una mano.
+
+Las fichas disponibles se almacenan exclusivamente
+en Jugador.
+
+ResultadoAporte agrupa los estados actualizados del
+jugador y su participación después de un aporte.
+
+El dominio protege las invariantes locales.
+El motor coordina las reglas y transiciones globales.
+
+## Acciones del dominio
+
+Accion representa las decisiones de los participantes
+mediante una interfaz sellada.
+
+El motor, los bots y la interfaz utilizan este contrato
+sin duplicar la representación de acciones.
+
+La validación contextual y ejecución de acciones
+corresponden al motor.
+
+## Configuración y estados agregados
+
+ConfiguracionPartida representa los parámetros iniciales.
+
+EstadoMano reúne los componentes de una mano concreta
+y protege sus invariantes estructurales.
+
+EstadoPartida contiene EstadoMano mediante composición
+y verifica la conservación global de fichas.
+
+El motor será responsable de producir nuevos estados
+mediante transiciones válidas.
+
+## Resultados de transiciones
+
+ResultadoTransicion representa el éxito o rechazo
+de una operación mediante polimorfismo.
+
+La interfaz Android podrá consumir resultados sin
+depender de la implementación interna del motor.
+
+Core permanece independiente de Android y Compose.

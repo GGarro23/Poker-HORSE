@@ -1,0 +1,12 @@
+package cr.ac.tec.pokerhorse.core.domain
+
+enum class ErrorDominio {
+    JUGADOR_INEXISTENTE,
+    JUGADOR_NO_ACTIVO,
+    FUERA_DE_TURNO,
+    ACCION_NO_PERMITIDA,
+    MONTO_INVALIDO,
+    FICHAS_INSUFICIENTES,
+    MANO_FINALIZADA,
+    PARTIDA_FINALIZADA
+}

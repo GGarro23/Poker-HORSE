@@ -63,3 +63,129 @@ Resultado: BUILD SUCCESSFUL.
 Duracion: 11 segundos.
 
 Commit de infraestructura: fae8536.
+
+## 2026-11-26 - Cartas, rangos y palos
+
+Comando:
+./gradlew :core:test --rerun-tasks
+
+Resultados verificados mediante informes XML:
+
+- CoreInfoTest: 1 prueba.
+- CartaTest: 9 pruebas.
+- Total: 10 pruebas.
+- Fallos: 0.
+- Errores: 0.
+- Omitidas: 0.
+
+Resultado: exitoso.
+
+## 2026-11-26 - Mazo inmutable
+
+Comando:
+./gradlew :core:test --rerun-tasks
+
+Primera ejecución:
+- 19 pruebas.
+- 1 fallo en extraerDeMazoVacio.
+- Se corrigió la validación del estado del mazo
+  antes de acceder a la primera carta.
+
+Ejecución posterior verificada mediante XML:
+- CoreInfoTest: 1 prueba.
+- CartaTest: 9 pruebas.
+- MazoTest: 9 pruebas.
+- Total: 19.
+- Fallos: 0.
+- Errores: 0.
+- Omitidas: 0.
+
+Resultado: exitoso.
+
+## 2026-11-26 - Jugadores, identidad y participación
+
+Comando:
+./gradlew :core:test --rerun-tasks
+
+Resultados confirmados mediante informes XML:
+
+- CoreInfoTest: 1 prueba.
+- CartaTest: 9 pruebas.
+- MazoTest: 9 pruebas.
+- AsientoTest: 5 pruebas.
+- JugadorIdTest: 5 pruebas.
+- JugadorTest: 17 pruebas.
+- ParticipacionManoTest: 23 pruebas.
+
+Total: 69 pruebas.
+Fallos: 0.
+Errores: 0.
+Omitidas: 0.
+
+Resultado: exitoso.
+
+Se verificaron las invariantes, la inmutabilidad,
+la protección de colecciones, los límites numéricos
+y la conservación local de fichas.
+
+## 2026-11-27 - Acciones del dominio
+
+Comando:
+./gradlew :core:test --rerun-tasks
+
+- Pruebas anteriores: 71.
+- AccionTest: 12.
+- Total: 83.
+- Fallos: 0.
+- Errores: 0.
+- Omitidas: 0.
+
+Resultado: BUILD SUCCESSFUL.
+Duración: 7 segundos.
+Evidencia: informes XML.
+
+## 2026-11-27 - Cierre del modelo de dominio
+
+Comando:
+./gradlew :core:test --rerun-tasks
+
+- CoreInfoTest: 1.
+- CartaTest: 9.
+- MazoTest: 9.
+- AsientoTest: 5.
+- JugadorIdTest: 5.
+- JugadorTest: 17.
+- ParticipacionManoTest: 23.
+- VarianteCalleTest: 2.
+- AccionTest: 12.
+- ConfiguracionPartidaTest: 16.
+- EstadoManoTest: 19.
+- EstadoPartidaTest: 10.
+- ResultadoTransicionTest: 6.
+
+Total: 134 pruebas.
+Fallos: 0.
+Errores: 0.
+Omitidas: 0.
+
+Resultado: BUILD SUCCESSFUL.
+Duración: 7 segundos.
+
+Evidencia: informes XML de Gradle.
+Fecha UTC: 2026-11-28T03:55:41Z.
+
+## 2026-11-27 — Chat 03
+
+- Evaluador alto: ejecución local completa exitosa (11 s), específica (15 s).
+- Base de evaluadores y variantes c9cc1a6: ejecución local
+  `./gradlew :core:test --rerun-tasks`, BUILD SUCCESSFUL (10 s),
+  4 tareas ejecutadas. No se recibió el XML, por lo que no se afirma un total.
+- Cierre: commit 9cf2a0ea8a5d275374eb56a331e09663408aae75.
+- Comando: `./gradlew :core:test --rerun-tasks`.
+- Resultado local comunicado por Gabriel tras sincronizar la rama: BUILD SUCCESSFUL.
+- Total acumulado según suma de informes XML: 174 pruebas, 0 fallos,
+  0 errores, 0 omitidas. Incluye las 13 pruebas nuevas de OrdenAccionTest.
+- Distribución esperada cotejada con fuentes: dominio e infraestructura 134,
+  evaluador alto 6, evaluador bajo 10, variantes 11, orden y casos límite 13.
+- Evidencia: salida del conteo XML comunicada por el propietario; no se
+  ejecutó Gradle en el entorno del chat. Integración con motor pendiente.
