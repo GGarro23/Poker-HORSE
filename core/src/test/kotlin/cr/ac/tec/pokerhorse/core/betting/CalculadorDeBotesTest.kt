@@ -1,7 +1,8 @@
 package cr.ac.tec.pokerhorse.core.betting
 
 import cr.ac.tec.pokerhorse.core.domain.*
-import cr.ac.tec.pokerhorse.core.variants.TexasHoldem
+import cr.ac.tec.pokerhorse.core.variants.*
+import cr.ac.tec.pokerhorse.core.evaluation.*
 import kotlin.test.*
 
 class CalculadorDeBotesTest {
@@ -31,5 +32,38 @@ class CalculadorDeBotesTest {
         val premios = calculador.distribuir(estado, TexasHoldem)
         assertEquals(JugadorId(2), premios.single().jugadorId)
         assertEquals(300L, premios.single().cantidad)
+    }
+
+    @Test fun splitYFichaImparPorBote() {
+        val origen = mano(listOf(101L, 101L, 101L))
+        // Resultados deterministas: dos high empatados y un low.
+        val alto = ValorAlto(CategoriaAlta.PAREJA, listOf(10, 7, 5, 2))
+        val bajo = ValorBajo(CategoriaBaja.SIN_PAREJA, listOf(8, 6, 4, 2, 1))
+        val cartas = origen.mazo.obtenerCartas().take(3)
+        var mazo = origen.mazo
+        repeat(3) { mazo = mazo.extraer().mazoRestante }
+        val estado = EstadoMano(origen.variante, origen.calle, mazo, origen.obtenerJugadores(),
+            origen.obtenerParticipaciones().mapIndexed { i, part -> part.agregarCarta(cartas[i]) },
+            boton = origen.boton)
+        val reglas = object : ReglasVariante by TexasHoldem {
+            override val modalidad = ModalidadEvaluacion.ALTA_Y_BAJA
+            override fun evaluar(propias: List<Carta>, comunitarias: List<Carta>): ResultadoEvaluacion =
+                if (propias.single() == cartas[2]) ResultadoEvaluacion(baja = bajo)
+                else ResultadoEvaluacion(alta = alto)
+        }
+        val premios = calculador.distribuir(estado, reglas).groupBy { it.jugadorId }
+            .mapValues { (_, premios) -> premios.sumOf { it.cantidad } }
+        assertEquals(mapOf(JugadorId(0) to 76L, JugadorId(1) to 76L, JugadorId(2) to 151L), premios)
+    }
+
+    @Test fun empateHighAsignaRestoDesdeBoton() {
+        val origen = mano(listOf(101L, 101L, 101L), setOf(2))
+        val alto = ValorAlto(CategoriaAlta.PAREJA, listOf(10, 7, 5, 2))
+        val reglas = object : ReglasVariante by TexasHoldem {
+            override fun evaluar(propias: List<Carta>, comunitarias: List<Carta>) =
+                ResultadoEvaluacion(alta = alto)
+        }
+        val premios = calculador.distribuir(origen, reglas).associate { it.jugadorId to it.cantidad }
+        assertEquals(mapOf(JugadorId(0) to 151L, JugadorId(1) to 152L), premios)
     }
 }

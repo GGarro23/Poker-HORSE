@@ -114,3 +114,20 @@ Fuentes adicionales: https://www.pokerstars.com/poker/learn/lesson/stud-fourth/
 y https://www.pokerstars.com/help/articles/draw-deck-reshuffle/
 La ratificación de estos detalles y las pruebas de integración con el motor
 siguen pendientes. LAN autoritativa; sin ranked obligatorio.
+
+## 9. Implementación del motor (chat 04)
+
+- Reparto por estrategia, obligaciones forzosas según contrato, actores
+  pendientes, límite de tres aumentos completos, cierre y devolución
+  del excedente por calle, botes secundarios y reparto por modalidad.
+- Convenciones del motor pendientes de ratificación por 00: all-in corto
+  no reabre la acción salvo que alcance un objetivo completo; el incremento
+  se mide desde el objetivo vigente; se necesita verificar el tratamiento
+  de la regla de media apuesta y acumulación de all-in incompletos.
+- Ficha impar de split high/low asignada a high; restos de empate asignados
+  por orden horario desde el botón. Dinero muerto sin elegibles se integra
+  al bote anterior disputable. Confirmar con 00 antes del cierre de reglas.
+- Rotación por manos completadas según configuración; botón avanza al
+  siguiente jugador con fichas al iniciar una mano.
+- LAN: el anfitrión es autoridad, conserva mazo y estado; los clientes solo
+  reciben proyecciones de jugador. Transporte y autenticación aún pendientes.

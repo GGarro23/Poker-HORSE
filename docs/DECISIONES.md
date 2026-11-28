@@ -205,3 +205,20 @@ de coordinación con 04 y cierre por 00.
   el máximo de ocho jugadores del dominio.
 - LAN listen server: el anfitrión es la autoridad; no ranked obligatorio.
 - La estrategia no muta el dominio, ni ejecuta apuestas, ni serializa.
+
+## PROP-04-002 — Integración del motor y sesión LAN
+
+Estado: implementada en feature/motor-de-juego; pendiente de pruebas y
+ratificación por 00. No modifica las firmas del dominio ni de variantes.
+
+- EstadoMotor compone EstadoPartida y una RondaApuestas interna; conserva
+  pendientes, derechos de subida, objetivo nominal e incrementos disponibles.
+  No duplica las fichas ni los aportes del dominio.
+- MotorDeJuego orquesta Repartidor, InicioMano, GestorApuestas y
+  CalculadorDeBotes. Las estrategias se resuelven por su contrato.
+- SesionAutoritativa serializa comandos en el anfitrión, exige revisión
+  esperada y devuelve vistas filtradas. La identidad debe provenir de
+  la asociación conexión-jugador en la capa de transporte.
+- La red no debe serializar EstadoMotor ni EstadoMano. Los bots consumen
+  VistaJugador y todas sus propuestas pasan por MotorDeJuego.aplicar.
+- Políticas de all-in corto, fichas impares y rotación: ver REGLAS.md.
