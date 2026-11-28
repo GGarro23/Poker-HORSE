@@ -54,10 +54,10 @@ class RepartidorTest {
     @Test fun allInRecibeCartasRetiradoNo() {
         val original = mano(SevenCardStud)
         val estado = EstadoMano(original.variante, original.calle, original.mazo,
-            original.obtenerJugadores(), original.obtenerParticipaciones().map {
+            original.obtenerJugadores().map { if (it.id == JugadorId(1)) it.copy(fichas = 0L) else it }, original.obtenerParticipaciones().map {
                 when (it.jugadorId) {
                     JugadorId(0) -> it.cambiarEstado(EstadoJugador.RETIRADO)
-                    JugadorId(1) -> it.cambiarEstado(EstadoJugador.ALL_IN)
+                    JugadorId(1) -> ParticipacionMano(it.jugadorId, aporteTotal = 1000L, estado = EstadoJugador.ALL_IN)
                     else -> it
                 }
             }, boton = original.boton)

@@ -69,7 +69,7 @@ internal class GestorApuestas {
             ((ronda.pendientes - id) + activos.filter {
                 actualizado.buscarParticipacion(it)!!.aporteCalle < objetivo
             }).intersect(activos) - id
-        val derechos = if (completo) activos - id else (ronda.derechoSubida - id).intersect(activos)
+        val derechos = if (completo) activos - id else (if (accion == Accion.Check) ronda.derechoSubida else ronda.derechoSubida - id).intersect(activos)
         val incrementos = if (completo && ronda.incrementos.size > 1) {
             val elegido = if (ronda.abierta) nuevoAporte - ronda.objetivo else nuevoAporte
             if (elegido == ronda.incrementos.max()) setOf(elegido) else ronda.incrementos

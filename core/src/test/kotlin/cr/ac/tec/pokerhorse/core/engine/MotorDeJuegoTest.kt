@@ -69,4 +69,33 @@ class MotorDeJuegoTest {
             }
         }
     }
+
+    @Test fun capDeTresAumentos() {
+        var estado = inicio()
+        for (objetivo in listOf(40L, 60L, 80L)) {
+            estado = avanzar(estado, Accion.Raise(objetivo))
+        }
+        assertFalse(motor.accionesLegales(estado).any { it is Accion.Raise })
+        assertEquals(3, estado.mano.aumentosCalle)
+        assertEquals(80L, estado.mano.apuestaVigente)
+    }
+
+    @Test fun allInCortoNoReabreAccion() {
+        val config = ConfiguracionPartida(cantidadJugadores = 3)
+        val jugadores = listOf(
+            Jugador(JugadorId(0), "A", Asiento(0), 1000L),
+            Jugador(JugadorId(1), "B", Asiento(1), 25L),
+            Jugador(JugadorId(2), "C", Asiento(2), 1975L))
+        var estado = InicioMano().iniciar(config, jugadores, Asiento(0), Mazo.crear(),
+            cr.ac.tec.pokerhorse.core.variants.TexasHoldem, 0)
+        estado = avanzar(estado, Accion.Call)
+        estado = avanzar(estado, Accion.AllIn)
+        estado = avanzar(estado, Accion.Call)
+        assertEquals(JugadorId(0), estado.mano.turno)
+        assertFalse(motor.accionesLegales(estado).any { it is Accion.Raise })
+        assertEquals(EstadoJugador.ALL_IN, estado.mano.buscarParticipacion(JugadorId(1))!!.estado)
+        estado = avanzar(estado, Accion.Call)
+        assertEquals(Calle.FLOP, estado.mano.calle)
+        assertEquals(75L, estado.mano.pozo)
+    }
 }
