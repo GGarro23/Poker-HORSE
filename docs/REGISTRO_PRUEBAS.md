@@ -189,3 +189,17 @@ Fecha UTC: 2026-11-28T03:55:41Z.
   evaluador alto 6, evaluador bajo 10, variantes 11, orden y casos límite 13.
 - Evidencia: salida del conteo XML comunicada por el propietario; no se
   ejecutó Gradle en el entorno del chat. Integración con motor pendiente.
+
+## Chat 04 — Motor de juego
+
+- Commit probado: `cd49a83d4ace31c976bfd02287aefa87a2ab5229`.
+- Comando: `./gradlew :core:test --rerun-tasks`.
+- Resultado local comunicado por Gabriel: BUILD SUCCESSFUL.
+- Conteo XML comunicado: `{'tests': 196, 'failures': 0, 'errors': 0, 'skipped': 0}`.
+- 174 pruebas anteriores y 22 nuevas: reparto (5), inicio (2), apuestas (2),
+  botes (5), motor (6), vista (1) y sesión autoritativa (1).
+- Evidencia: resultado y suma de XML proporcionados por el propietario;
+  no se ejecutó Gradle en el entorno del chat.
+- Alcance: core; transporte LAN real y aplicación Android pendientes.
+- Las convenciones de reapertura y fichas impares siguen pendientes de
+  ratificación en el centro de control (ver REGLAS.md).
