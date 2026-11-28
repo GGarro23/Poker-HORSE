@@ -70,5 +70,7 @@ Evaluadores alto y bajo y cinco estrategias implementados en
 feature/implementacion-variantes. Base validada localmente por Gabriel:
 c9cc1a6, BUILD SUCCESSFUL (10 segundos). Contrato general ratificado
 provisionalmente por 00. Cierre agrega pruebas de orden, bring-in,
-excepción de cuarta calle y mazo insuficiente; ejecución nueva pendiente.
-Integración a main condicionada a pruebas y coordinación con 04.
+excepción de cuarta calle y mazo insuficiente. Validación local de cierre:
+174 pruebas, 0 fallos, 0 errores, 0 omitidas, en el commit 9cf2a0e.
+Evaluadores y estrategias verificados; listos para consumo por el motor.
+Integración a main pendiente de coordinación final con 04 y 00.
