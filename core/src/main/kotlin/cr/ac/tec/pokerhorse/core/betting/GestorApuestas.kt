@@ -40,18 +40,26 @@ internal class GestorApuestas {
         return acciones.toList()
     }
 
-    fun aplicar(mano: EstadoMano, ronda: RondaApuestas, accion: Accion): Pair<EstadoMano, RondaApuestas> {
-        require(accion in legales(mano, ronda))
-        val id = mano.turno!!
+    /** Fichas nuevas que exige una acción ya autorizada. */
+    fun monto(mano: EstadoMano, ronda: RondaApuestas, accion: Accion): Long {
+        val id = requireNotNull(mano.turno)
         val jugador = mano.buscarJugador(id)!!
         val participacion = mano.buscarParticipacion(id)!!
-        val monto = when (accion) {
+        return when (accion) {
             Accion.Fold, Accion.Check -> 0L
             Accion.Call -> minOf(jugador.fichas, (ronda.objetivo - participacion.aporteCalle).coerceAtLeast(0L))
             Accion.AllIn -> jugador.fichas
             is Accion.Bet -> accion.cantidad
             is Accion.Raise -> accion.hasta - participacion.aporteCalle
         }
+    }
+
+    fun aplicar(mano: EstadoMano, ronda: RondaApuestas, accion: Accion): Pair<EstadoMano, RondaApuestas> {
+        require(accion in legales(mano, ronda))
+        val id = mano.turno!!
+        val jugador = mano.buscarJugador(id)!!
+        val participacion = mano.buscarParticipacion(id)!!
+        val monto = monto(mano, ronda, accion)
         val aporte = if (accion == Accion.Fold) ResultadoAporte(jugador,
             participacion.cambiarEstado(EstadoJugador.RETIRADO))
         else participacion.aportarFichas(jugador, monto)

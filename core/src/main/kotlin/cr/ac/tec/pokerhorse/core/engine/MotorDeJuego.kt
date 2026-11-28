@@ -123,16 +123,20 @@ class MotorDeJuego internal constructor(
         val mano = estado.mano
         require(mano.buscarJugador(jugadorId) != null)
         val reglas = obtenerReglas(mano.variante)
+        val legales = if (mano.turno == jugadorId) accionesLegales(estado) else emptyList()
         val participantes = mano.obtenerJugadores().map { jugador ->
             val p = mano.buscarParticipacion(jugador.id)
+            val cartas = p?.obtenerCartas().orEmpty()
+            val visibles = reglas.cartasVisibles(cartas)
             VistaParticipante(jugador.id, jugador.nombre, jugador.asiento, jugador.fichas,
                 p?.aporteCalle ?: 0L, p?.aporteTotal ?: 0L, p?.estado,
-                reglas.cartasVisibles(p?.obtenerCartas().orEmpty()))
+                visibles, cartas.size - visibles.size)
         }
         return VistaJugador(jugadorId, mano.variante, mano.calle, mano.boton, mano.turno,
             mano.pozo, participantes, mano.buscarParticipacion(jugadorId)?.obtenerCartas().orEmpty(),
             mano.obtenerComunitarias(),
-            if (mano.turno == jugadorId) accionesLegales(estado) else emptyList(),
-            estado.finalizada, estado.resultado?.premios.orEmpty(), estado.partida.manosCompletadas)
+            legales,
+            estado.finalizada, estado.resultado?.premios.orEmpty(), estado.partida.manosCompletadas,
+            legales.associateWith { apuestas.monto(mano, requireNotNull(estado.ronda), it) })
     }
 }

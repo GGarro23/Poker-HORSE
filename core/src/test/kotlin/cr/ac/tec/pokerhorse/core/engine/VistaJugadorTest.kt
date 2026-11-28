@@ -14,8 +14,13 @@ class VistaJugadorTest {
         assertEquals(2, vista.propias.size)
         assertTrue(vista.participantes.all { it.cartasVisibles.isEmpty() })
         assertTrue(vista.accionesLegales.isNotEmpty())
+        assertTrue(vista.participantes.all { it.cantidadCartasOcultas == 2 })
+        assertEquals(vista.accionesLegales.toSet(), vista.montosAcciones.keys)
+        assertEquals(0L, vista.montosAcciones[Accion.Fold])
+        assertEquals(20L, vista.montosAcciones[Accion.Call])
         val otro = estado.mano.obtenerJugadores().first { it.id != actor }.id
         assertTrue(motor.vistaPara(estado, otro).accionesLegales.isEmpty())
+        assertTrue(motor.vistaPara(estado, otro).montosAcciones.isEmpty())
         val propuesta = BotBasico().decidir(vista)!!
         assertTrue(propuesta in vista.accionesLegales)
         assertIs<ResultadoTransicion.Exito<EstadoMotor>>(motor.aplicar(estado, actor, propuesta))

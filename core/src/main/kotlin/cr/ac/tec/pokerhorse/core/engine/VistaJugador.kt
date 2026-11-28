@@ -10,7 +10,8 @@ data class VistaParticipante(
     val aporteCalle: Long,
     val aporteTotal: Long,
     val estado: EstadoJugador?,
-    val cartasVisibles: List<Carta>
+    val cartasVisibles: List<Carta>,
+    val cantidadCartasOcultas: Int = 0
 )
 
 /** Proyección sin estado autoritativo, cartas privadas ajenas ni mazo. */
@@ -27,5 +28,6 @@ data class VistaJugador(
     val accionesLegales: List<Accion>,
     val finalizada: Boolean,
     val premios: List<PremioBote>,
-    val manosCompletadas: Long
+    val manosCompletadas: Long,
+    val montosAcciones: Map<Accion, Long> = emptyMap()
 )
