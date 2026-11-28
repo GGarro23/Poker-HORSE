@@ -14,29 +14,26 @@
 
 ## Dominio
 
-Hito 1 en desarrollo.
+Hito 1 implementado y probado.
+Pendiente de ratificación final e integración.
 
-- [x] Palo.
-- [x] Rango.
-- [x] Carta.
-- [x] Pruebas de cartas, rangos y palos.
+- [x] Carta, Rango y Palo.
 - [x] Mazo y ResultadoExtraccion.
-- [x] Pruebas de mazo.
 - [x] JugadorId y Asiento.
-- [x] Jugador.
-- [x] EstadoJugador.
+- [x] Jugador y EstadoJugador.
 - [x] ParticipacionMano y ResultadoAporte.
-- [x] Pruebas de identidad, jugadores y participación.
 - [x] Variante y Calle.
-- [x] Acciones.
-- [ ] Estados de mano y partida.
-- [ ] Configuracion de partida.
-- [ ] Contratos restantes.
+- [x] Accion.
+- [x] ConfiguracionPartida.
+- [x] EstadoMano.
+- [x] EstadoPartida.
+- [x] ResultadoTransicion y ErrorDominio.
+- [x] Pruebas unitarias del modelo base.
 
-El dominio se construye desde cero, sin utilizar
+Pruebas acumuladas: 134 exitosas.
+
+El dominio se construyó desde cero, sin utilizar
 la base preliminar 00.
-
-Pruebas acumuladas: 83 exitosas.
 
 ## Motor
 
@@ -49,10 +46,12 @@ Diseno pixel art definitivo pendiente.
 
 ## Siguiente paso
 
-Completar el modelo de variantes, calles y acciones.
+Ratificar los contratos del modelo de dominio.
 
-Continuar con la configuración y los estados
-agregados de mano y partida.
+Continuar con evaluadores, estrategias HORSE
+y motor de juego.
+
+Resolver los ajustes de integración de forma coordinada.
 
 ## Cierre del Hito 0
 

@@ -143,3 +143,33 @@ Comando:
 Resultado: BUILD SUCCESSFUL.
 Duración: 7 segundos.
 Evidencia: informes XML.
+
+## 2026-11-27 - Cierre del modelo de dominio
+
+Comando:
+./gradlew :core:test --rerun-tasks
+
+- CoreInfoTest: 1.
+- CartaTest: 9.
+- MazoTest: 9.
+- AsientoTest: 5.
+- JugadorIdTest: 5.
+- JugadorTest: 17.
+- ParticipacionManoTest: 23.
+- VarianteCalleTest: 2.
+- AccionTest: 12.
+- ConfiguracionPartidaTest: 16.
+- EstadoManoTest: 19.
+- EstadoPartidaTest: 10.
+- ResultadoTransicionTest: 6.
+
+Total: 134 pruebas.
+Fallos: 0.
+Errores: 0.
+Omitidas: 0.
+
+Resultado: BUILD SUCCESSFUL.
+Duración: 7 segundos.
+
+Evidencia: informes XML de Gradle.
+Fecha UTC: 2026-11-28T03:55:41Z.

@@ -125,6 +125,15 @@ La unicidad de identidades y asientos, la capacidad de
 la mesa y la coherencia global corresponden a los
 estados agregados de la partida y al motor.
 
+## D-010 - Variantes y calles
+
+Estado: implementada y probada, pendiente de ratificación.
+
+Representar variantes y calles mediante enumeraciones.
+
+Delegar las secuencias y reglas a las estrategias.
+No utilizar ordinal para avanzar entre calles.
+
 ## D-011 - Representación polimórfica de acciones
 
 Estado: implementada y probada, pendiente de ratificación.
@@ -142,3 +151,44 @@ Justificación:
 
 Evitar estados inválidos, garantizar seguridad de tipos
 y permitir expresiones when exhaustivas.
+
+## D-012 - Configuración inmutable
+
+Estado: implementada y probada, pendiente de ratificación.
+
+Separar los parámetros iniciales de los estados
+dinámicos de la partida.
+
+Utilizar Long para las cantidades de fichas y
+prevenir desbordamientos desde la construcción.
+
+## D-013 - Estados agregados
+
+Estado: implementada y probada, pendiente de ratificación.
+
+EstadoMano reúne jugadores, participaciones, mazo,
+cartas comunitarias y datos de las apuestas.
+
+EstadoPartida contiene EstadoMano mediante composición.
+
+No duplicar el almacenamiento de jugadores ni del pozo.
+
+Calcular el pozo y la apuesta vigente a partir
+de los aportes.
+
+Proteger las colecciones mediante copias defensivas.
+
+Comprobar la conservación global de fichas respecto
+de la configuración inicial.
+
+## D-014 - Resultados tipados
+
+Estado: implementada y probada, pendiente de ratificación.
+
+Utilizar ResultadoTransicion<out T> para representar
+éxito o rechazo de una operación.
+
+Representar los errores esperables mediante ErrorDominio.
+
+Reservar las excepciones para construcciones inválidas
+o incumplimientos de las precondiciones internas.

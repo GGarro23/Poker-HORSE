@@ -42,4 +42,8 @@ class Mazo private constructor(cartas: List<Carta>) {
         val mazoRestante = Mazo(cartas.drop(1))
         return ResultadoExtraccion(carta, mazoRestante)
     }
+
+    fun obtenerCartas(): List<Carta> {
+        return cartas.toList()
+    }
 }

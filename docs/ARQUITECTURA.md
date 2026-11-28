@@ -100,3 +100,26 @@ sin duplicar la representación de acciones.
 
 La validación contextual y ejecución de acciones
 corresponden al motor.
+
+## Configuración y estados agregados
+
+ConfiguracionPartida representa los parámetros iniciales.
+
+EstadoMano reúne los componentes de una mano concreta
+y protege sus invariantes estructurales.
+
+EstadoPartida contiene EstadoMano mediante composición
+y verifica la conservación global de fichas.
+
+El motor será responsable de producir nuevos estados
+mediante transiciones válidas.
+
+## Resultados de transiciones
+
+ResultadoTransicion representa el éxito o rechazo
+de una operación mediante polimorfismo.
+
+La interfaz Android podrá consumir resultados sin
+depender de la implementación interna del motor.
+
+Core permanece independiente de Android y Compose.
