@@ -84,3 +84,9 @@ Commit probado: `cd49a83d4ace31c976bfd02287aefa87a2ab5229`.
 BUILD SUCCESSFUL y 196 pruebas confirmadas por el propietario mediante XML.
 No se alteraron los contratos previos de dominio y variantes. Las reglas
 pendientes de ratificación están en REGLAS.md y DECISIONES.md.
+
+## Chat 05 — Android (28-11-2026)
+
+Implementación en feature/android-compose: menú, configuración, sesión local
+autoritativa, ViewModel, mesa adaptable, acciones legales, bots, premios y fin.
+Arte definitivo y validación física pendientes. Ver docs/ANDROID.md.
